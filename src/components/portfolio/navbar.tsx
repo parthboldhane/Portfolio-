@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -20,20 +19,20 @@ export function Navbar() {
 
   const navLinks = [
     { name: "Home", href: "#home" },
-    { name: "Skills", href: "#skills" },
-    { name: "Projects", href: "#projects" },
-    { name: "AI Refiner", href: "#ai-refiner" },
+    { name: "Arsenal", href: "#skills" },
+    { name: "Work", href: "#projects" },
+    { name: "AI", href: "#ai-refiner" },
     { name: "Contact", href: "#contact" },
   ];
 
   return (
     <nav className={cn(
-      "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4",
-      isScrolled ? "py-4 bg-white/80 backdrop-blur-md shadow-sm border-b" : "py-6 bg-transparent"
+      "fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-4",
+      isScrolled ? "py-4 bg-black/90 backdrop-blur-xl border-b border-primary/20" : "py-8 bg-transparent"
     )}>
       <div className="container mx-auto max-w-6xl flex justify-between items-center">
-        <div className="text-2xl font-bold tracking-tighter text-primary">
-          BoldFolio
+        <div className="text-2xl font-black tracking-tighter text-primary italic neon-text-primary">
+          BOLDFOLIO<span className="text-white">.SYS</span>
         </div>
 
         {/* Desktop Nav */}
@@ -42,19 +41,19 @@ export function Navbar() {
             <a
               key={link.name}
               href={link.href}
-              className="text-sm font-medium hover:text-primary transition-colors"
+              className="text-[10px] uppercase font-black tracking-[0.2em] hover:text-primary transition-all duration-300"
             >
               {link.name}
             </a>
           ))}
-          <Button variant="default" className="rounded-full px-6">
-            Hire Me
+          <Button variant="outline" className="rounded-none border-primary text-primary hover:bg-primary hover:text-black font-bold uppercase tracking-widest neon-border">
+            Connect
           </Button>
         </div>
 
         {/* Mobile Toggle */}
         <button
-          className="md:hidden p-2 text-foreground"
+          className="md:hidden p-2 text-primary"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? <X /> : <Menu />}
@@ -63,24 +62,30 @@ export function Navbar() {
 
       {/* Mobile Nav */}
       <div className={cn(
-        "md:hidden fixed inset-0 top-[72px] bg-white z-40 transition-transform duration-300 ease-in-out p-8",
+        "md:hidden fixed inset-0 top-0 bg-black z-40 transition-transform duration-500 ease-in-out p-8 flex flex-col justify-center",
         isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
       )}>
-        <div className="flex flex-col gap-6 text-center">
+        <div className="flex flex-col gap-8 text-center">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className="text-xl font-medium hover:text-primary"
+              className="text-4xl font-black italic uppercase tracking-tighter hover:text-primary transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {link.name}
             </a>
           ))}
-          <Button className="rounded-full w-full py-6 text-lg">
-            Hire Me
+          <Button className="rounded-none w-full py-8 text-xl font-black uppercase tracking-widest bg-primary text-black">
+            Connect Now
           </Button>
         </div>
+        <button 
+          onClick={() => setIsMobileMenuOpen(false)}
+          className="absolute top-8 right-8 text-primary"
+        >
+          <X size={40} />
+        </button>
       </div>
     </nav>
   );

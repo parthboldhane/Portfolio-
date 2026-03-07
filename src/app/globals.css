@@ -1,51 +1,29 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 280 15% 98%;
-    --foreground: 269 42% 15%;
-    --card: 0 0% 100%;
-    --card-foreground: 269 42% 15%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 269 42% 15%;
-    --primary: 269 42% 43%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 236 66% 96%;
-    --secondary-foreground: 236 66% 40%;
-    --muted: 280 10% 94%;
-    --muted-foreground: 269 20% 45%;
-    --accent: 236 66% 60%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 269 20% 90%;
-    --input: 269 20% 90%;
-    --ring: 269 42% 43%;
-    --radius: 1rem;
-  }
-  .dark {
-    --background: 269 42% 5%;
+    --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
-    --card: 269 42% 7%;
+    --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;
-    --popover: 269 42% 7%;
+    --popover: 240 10% 3.9%;
     --popover-foreground: 0 0% 98%;
-    --primary: 269 42% 43%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 269 42% 12%;
+    --primary: 180 100% 50%; /* Neon Cyan */
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 269 42% 12%;
-    --muted-foreground: 269 20% 65%;
-    --accent: 236 66% 60%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 300 100% 50%; /* Neon Magenta */
     --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 269 42% 15%;
-    --input: 269 42% 15%;
-    --ring: 269 42% 43%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 180 100% 50%;
+    --radius: 0.75rem;
   }
 }
 
@@ -55,8 +33,41 @@
   }
   body {
     @apply bg-background text-foreground font-body;
+    background-image: 
+      radial-gradient(at 0% 0%, hsla(180, 100%, 50%, 0.15) 0, transparent 50%),
+      radial-gradient(at 100% 100%, hsla(300, 100%, 50%, 0.1) 0, transparent 50%);
+    background-attachment: fixed;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-headline;
+    @apply font-headline uppercase tracking-wider;
+    text-shadow: 0 0 20px hsla(var(--primary), 0.3);
   }
+}
+
+.neon-border {
+  border: 1px solid hsla(var(--primary), 0.5);
+  box-shadow: 0 0 15px hsla(var(--primary), 0.2);
+}
+
+.neon-border-accent {
+  border: 1px solid hsla(var(--accent), 0.5);
+  box-shadow: 0 0 15px hsla(var(--accent), 0.2);
+}
+
+.neon-text-primary {
+  text-shadow: 0 0 10px hsla(var(--primary), 0.5);
+}
+
+.neon-text-accent {
+  text-shadow: 0 0 10px hsla(var(--accent), 0.5);
+}
+
+@keyframes dog-walk {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  25% { transform: translateY(-5px) rotate(-2deg); }
+  75% { transform: translateY(-5px) rotate(2deg); }
+}
+
+.animate-dog-walk {
+  animation: dog-walk 0.6s infinite ease-in-out;
 }

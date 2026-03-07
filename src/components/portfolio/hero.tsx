@@ -1,24 +1,50 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Mail, Phone, Linkedin, ArrowRight } from "lucide-react";
+import { Mail, Phone, Linkedin, ArrowRight, Terminal } from "lucide-react";
 import type { PortfolioData } from "@/lib/portfolio-data";
 
 export function Hero({ data }: { data: PortfolioData }) {
   const profileImage = PlaceHolderImages.find(img => img.id === 'profile-pic');
+  const [terminalText, setTerminalText] = useState("");
+  const fullText = `> parth_boldhane --init\n> status: active\n> role: firebase_expert\n> loc: nagpur, in\n> loading_arsenal... 100%`;
+
+  useEffect(() => {
+    let i = 0;
+    const interval = setInterval(() => {
+      setTerminalText(fullText.slice(0, i));
+      i++;
+      if (i > fullText.length) clearInterval(interval);
+    }, 40);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section id="home" className="pt-32 pb-16 md:pt-48 md:pb-32 px-4 relative overflow-hidden">
       <div className="container mx-auto max-w-6xl flex flex-col md:flex-row items-center gap-12 relative z-10">
         <div className="flex-1 text-center md:text-left">
-          <div className="inline-block px-4 py-1.5 mb-6 text-xs font-bold tracking-widest text-primary uppercase bg-primary/10 border border-primary/30 rounded-full neon-text-primary">
+          <div className="inline-block px-4 py-1.5 mb-6 text-xs font-bold tracking-widest text-primary uppercase bg-primary/10 border border-primary/30 rounded-full neon-text-primary animate-pulse">
             {data.role}
           </div>
-          <h1 className="text-5xl md:text-8xl font-black mb-6 tracking-tighter leading-none italic">
-            PARTH <span className="text-primary neon-text-primary">BOLDHANE</span>
+          <h1 className="text-5xl md:text-8xl font-black mb-6 tracking-tighter leading-none italic group">
+            PARTH <span className="text-primary neon-text-primary hover-glitch inline-block">BOLDHANE</span>
           </h1>
+          
+          {/* Cyber Terminal Feature */}
+          <div className="bg-black/80 border border-primary/20 p-4 rounded-none mb-8 font-mono text-sm md:text-base text-primary/80 neon-border max-w-md mx-auto md:mx-0">
+            <div className="flex items-center gap-2 mb-2 border-b border-primary/10 pb-1">
+              <Terminal className="w-4 h-4" />
+              <span className="text-[10px] uppercase font-bold">System Console v1.0.4</span>
+            </div>
+            <div className="whitespace-pre-line leading-relaxed">
+              {terminalText}
+              <span className="terminal-cursor"></span>
+            </div>
+          </div>
+
           <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl font-medium">
             {data.bio}
           </p>
@@ -40,22 +66,25 @@ export function Hero({ data }: { data: PortfolioData }) {
           <div className="relative w-72 h-72 md:w-96 md:h-96 mx-auto group">
             <div className="absolute inset-0 bg-primary/20 rounded-none rotate-3 group-hover:rotate-6 transition-transform neon-border"></div>
             <div className="absolute inset-0 bg-accent/20 rounded-none -rotate-3 group-hover:-rotate-6 transition-transform border border-accent/50"></div>
-            <div className="relative w-full h-full overflow-hidden border-2 border-primary/50 grayscale hover:grayscale-0 transition-all duration-500">
+            <div className="relative w-full h-full overflow-hidden border-2 border-primary/50 grayscale group-hover:grayscale-0 transition-all duration-700 shadow-[0_0_30px_rgba(34,211,238,0.2)]">
               <Image
                 src={profileImage?.imageUrl || "https://picsum.photos/seed/parth/400/400"}
                 alt={data.name}
                 fill
-                className="object-cover"
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
                 data-ai-hint="professional portrait"
               />
             </div>
+            {/* Decorative Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></div>
           </div>
         </div>
       </div>
       
       {/* Decorative background elements */}
       <div className="absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/20 to-transparent -translate-y-1/2 -skew-y-12"></div>
-      <div className="absolute top-1/3 right-10 w-64 h-64 bg-accent/5 rounded-full blur-[100px]"></div>
+      <div className="absolute top-1/4 right-0 w-96 h-96 bg-accent/5 rounded-full blur-[120px]"></div>
+      <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-primary/5 rounded-full blur-[120px]"></div>
     </section>
   );
 }

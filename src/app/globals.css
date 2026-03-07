@@ -34,13 +34,12 @@
   body {
     @apply bg-background text-foreground font-body;
     background-image: 
-      radial-gradient(at 0% 0%, hsla(180, 100%, 50%, 0.15) 0, transparent 50%),
-      radial-gradient(at 100% 100%, hsla(300, 100%, 50%, 0.1) 0, transparent 50%);
+      radial-gradient(at 0% 0%, hsla(180, 100%, 50%, 0.1) 0, transparent 50%),
+      radial-gradient(at 100% 100%, hsla(300, 100%, 50%, 0.08) 0, transparent 50%);
     background-attachment: fixed;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-headline uppercase tracking-wider;
-    text-shadow: 0 0 20px hsla(var(--primary), 0.3);
   }
 }
 
@@ -62,12 +61,55 @@
   text-shadow: 0 0 10px hsla(var(--accent), 0.5);
 }
 
+/* Dog Animations */
 @keyframes dog-walk {
   0%, 100% { transform: translateY(0) rotate(0); }
-  25% { transform: translateY(-5px) rotate(-2deg); }
-  75% { transform: translateY(-5px) rotate(2deg); }
+  25% { transform: translateY(-4px) rotate(-1deg); }
+  75% { transform: translateY(-4px) rotate(1deg); }
+}
+
+@keyframes tail-wag {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(20deg); }
+}
+
+@keyframes blink {
+  0%, 90%, 100% { opacity: 1; }
+  95% { opacity: 0; }
 }
 
 .animate-dog-walk {
-  animation: dog-walk 0.6s infinite ease-in-out;
+  animation: dog-walk 0.5s infinite ease-in-out;
+}
+
+.animate-tail-wag {
+  animation: tail-wag 0.3s infinite ease-in-out;
+  transform-origin: bottom left;
+}
+
+.animate-blink {
+  animation: blink 4s infinite;
+}
+
+/* Glitch Effect */
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+.hover-glitch:hover {
+  animation: glitch 0.3s cubic-bezier(.25,.46,.45,.94) both infinite;
+}
+
+.terminal-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 1.2em;
+  background: hsl(var(--primary));
+  animation: blink 1s step-end infinite;
+  vertical-align: middle;
 }

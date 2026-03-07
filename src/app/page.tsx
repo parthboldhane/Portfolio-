@@ -6,6 +6,7 @@ import { Hero } from "@/components/portfolio/hero";
 import { Skills } from "@/components/portfolio/skills";
 import { Projects } from "@/components/portfolio/projects";
 import { AIRefiner } from "@/components/portfolio/ai-tool-refiner";
+import { AIBioGenerator } from "@/components/portfolio/ai-bio-generator";
 import { Contact } from "@/components/portfolio/contact";
 import { ScrollingCompanion } from "@/components/portfolio/scrolling-companion";
 import { initialPortfolioData } from "@/lib/portfolio-data";
@@ -18,6 +19,7 @@ export default function Home() {
       <Navbar />
       <Hero data={data} />
       <Skills skills={data.skills} />
+      <AIBioGenerator />
       <Projects projects={data.projects} />
       <AIRefiner />
       <Contact data={data} />

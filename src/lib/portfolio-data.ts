@@ -14,6 +14,12 @@ export interface Skill {
   items: string[];
 }
 
+export interface SkillMetric {
+  subject: string;
+  A: number;
+  fullMark: number;
+}
+
 export interface PortfolioData {
   name: string;
   role: string;
@@ -23,6 +29,7 @@ export interface PortfolioData {
   linkedin: string;
   education: string;
   skills: Skill[];
+  skillMetrics: SkillMetric[];
   projects: Experience[];
 }
 
@@ -37,16 +44,24 @@ export const initialPortfolioData: PortfolioData = {
   skills: [
     {
       category: "Expertise",
-      items: ["Firebase", "Cloud Architecture"]
+      items: ["Firebase", "Cloud Architecture", "Next.js", "React"]
     },
     {
       category: "Languages",
-      items: ["C", "C++", "Python", "HTML", "CSS"]
+      items: ["C", "C++", "Python", "HTML", "CSS", "JavaScript"]
     },
     {
       category: "Tools",
-      items: ["Git", "VS Code", "Firebase Console"]
+      items: ["Git", "VS Code", "Firebase Console", "Genkit AI"]
     }
+  ],
+  skillMetrics: [
+    { subject: 'Firebase', A: 120, fullMark: 150 },
+    { subject: 'React', A: 110, fullMark: 150 },
+    { subject: 'C++', A: 130, fullMark: 150 },
+    { subject: 'Cloud', A: 100, fullMark: 150 },
+    { subject: 'Next.js', A: 115, fullMark: 150 },
+    { subject: 'UI/UX', A: 90, fullMark: 150 },
   ],
   projects: [
     {

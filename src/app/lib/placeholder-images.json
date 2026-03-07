@@ -1,0 +1,23 @@
+
+{
+  "placeholderImages": [
+    {
+      "id": "profile-pic",
+      "description": "Professional profile photo of Parth Boldhane",
+      "imageUrl": "https://picsum.photos/seed/parth/400/400",
+      "imageHint": "professional man"
+    },
+    {
+      "id": "project-cpp-game",
+      "description": "C++ Game Project Preview",
+      "imageUrl": "https://picsum.photos/seed/cppgame/600/400",
+      "imageHint": "retro game"
+    },
+    {
+      "id": "project-login-web",
+      "description": "Web Login Page Project Preview",
+      "imageUrl": "https://picsum.photos/seed/loginweb/600/400",
+      "imageHint": "login website"
+    }
+  ]
+}

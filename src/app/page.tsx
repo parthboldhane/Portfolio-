@@ -1,3 +1,26 @@
+
+"use client";
+
+import { useState } from "react";
+import { Navbar } from "@/components/portfolio/navbar";
+import { Hero } from "@/components/portfolio/hero";
+import { Skills } from "@/components/portfolio/skills";
+import { Projects } from "@/components/portfolio/projects";
+import { AIRefiner } from "@/components/portfolio/ai-tool-refiner";
+import { Contact } from "@/components/portfolio/contact";
+import { initialPortfolioData } from "@/lib/portfolio-data";
+
 export default function Home() {
-  return <></>;
+  const [data] = useState(initialPortfolioData);
+
+  return (
+    <main className="min-h-screen">
+      <Navbar />
+      <Hero data={data} />
+      <Skills skills={data.skills} />
+      <Projects projects={data.projects} />
+      <AIRefiner />
+      <Contact data={data} />
+    </main>
+  );
 }
